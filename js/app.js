@@ -2,13 +2,22 @@
 
 function addOffer(parentEl, offer) {
     const words = ['дня', 'дней', 'день'];
-    const number = offer.remainingDays %10 ;
+    const number = offer.remainingDays % 100;
     let result = words [1];
-    if (number > 1 $$ number < 5) {
-        result = words[0];
-    }
-    else if (number === 1) {
-        result = words[2];
+    let numberToGo = number % 10;
+    if (number >= 5 && number <= 20) {
+        result = words[1];
+    } else if (number) {
+        switch (numberToGo) {
+            case (1):
+                result = words[2];
+                break;
+            case (2):;
+            case (3):;
+            case (4):
+                result = words[0];
+                break;
+        }
     }
     const rankEl = document.createElement('h3');
     rankEl.textContent = offer.title;
@@ -36,6 +45,7 @@ function addOffer(parentEl, offer) {
         specificationEl.textContent = offer.description;
     }
 }
+
 const newOffer = {
     image: 'https://js-rosbank.ru/assets/offer-school.png',
     remainingDays: 0,
@@ -45,11 +55,10 @@ const newOffer = {
 
 const newOffer2 = {
     image: 'https://js-rosbank.ru/assets/offer-visa-cashback.jpg',
-    remainingDays: 13,
+    remainingDays: 43,
     title: 'Кешбэк 20% по картам VISA',
     description: 'Оформите карту VISA #МожноВСЁ и получайте кешбэк 20% за покупки у наших партнеров',
 };
-
 
 
 addOffer(document.body, newOffer2);
